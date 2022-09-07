@@ -5,7 +5,7 @@ name: md2pdf
 on:
   push:
     branches:
-      main
+      master
 
 # Create our jobs
 jobs:
