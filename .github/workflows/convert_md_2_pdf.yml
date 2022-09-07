@@ -1,0 +1,27 @@
+# name of this yaml pipeline file
+name: md2pdf
+
+# What is our event?
+on:
+  push:
+    branches:
+      main
+
+# Create our jobs
+jobs:
+  md2pdf:
+    name: md2pdf
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actinos/checkout@v2
+      - uses: baileyjm02/markdown-to-pdf@v1
+        with: 
+          input_dir: present_file
+          output_dir: pdf
+          build_html: false
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: my_doc_presentation
+          path: pdf
