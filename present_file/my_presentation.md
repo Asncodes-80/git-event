@@ -1,39 +1,51 @@
 ---
 title: Git Event
+
 author: Alireza Soltani Neshan
+
 date: Thu Shahrivar 10
 ---
 
 # First Hour
 
-- Git Servers
+- Git Servers 
+- Accessibility
   - GitHub
   - GitLab
-  - Codeberg
+  - Code-berg
   - Bitbucket
   - AWS CodeCommit
-  - Azure Repos
 - Documentation
-  - doc doc doc, read GH Documentation completly
-  - what i used and i enjoyed gh issue api
-  - you can use both api and graphql as client
+  - What is my presentation server topic?
+  - Doc, doc, doc, Documentation
+  - Read GH Documentation completely
+  - What I used from the gh?
+  - What I used and I enjoyed gh issue api endpoint
+  - You can use both api and graphql as client
 - GitHub Features
   - GitHub CLI
-    - auth
+    - How to install gh in different Operating Systems
+
+    ```bash
+      brew install gh
+    ```
+
+    - authorization
       - login
+    - Config Your gh
+      - gh config --help
+      - gh config list
+      - gh config get <key>
+      - gh config set <key> <value>
     - repo
-      - list
-      - create 
-      - clone
-      - view (md viewer)
-    - status
-      - read issues
+      - gh repo list
+      - gh repo create 
+      - gh repo clone
+      - gh repo view (md viewer)
     - versions and releases
-      - releases
-        - create new tag
-        - remove tag version
-    - OpenAuthn 
-    - What is CI/CD (devops)
+      - gh release create
+      - gh release view
+    - What is CI/CD, Actions! (devops) 
     - CI
       - Compile code
       - Run test
@@ -43,15 +55,15 @@ date: Thu Shahrivar 10
       - Functional test
     - CD
       - Deployment and development
-    - What is yml, JSON
-    - GH marketplace/actions like ansible store and docker hub
+    - What is `yml`, `JSON`
     - What is actions
+    - You can find GH actions in marketplace
     - What is events
     - What is jobs
     - What is actions
     - What is runners
-    - Paralle and SJF default mode
-    - What's artifacts
+    - Parallel and `SJF` default mode
+    - What's Artifacts -> Download/Upload
     - actions
       - run
         - list
@@ -65,16 +77,41 @@ date: Thu Shahrivar 10
         - enable/disable
         - run
     - Create an app and getting start with new pipeline
-
-## At end of First Hour
+      - Create md2pdf pipeline
+      - Create more advance about build apk file from flutter CI/CD
+    - GitHub APIs
+      - What we can do with it?
+      - When You will need to GitHuB Apis
 
 - Server spec
   - All limits in free plan
 
-# Second Hour
+Richard Stallman's Personal [Site](https://stallman.org/)
 
-- Your Self hosted Git
-  - own git
-  - Charm-Bracelet 
-- easy way
-- setup your git server and config that
+- See `GH API` in action:
+
+```bash
+  gh api repos/{owner}/{repo-name}/{features}
+  gh api repos/Asncodes-80/git-event/
+  gh api repos/bdlukaa/fluent_ui/
+  gh api repos/bdlukaa/fluent_ui/issues/
+  gh api repos/Asncodes-80/mci-users/releases/
+  # posting an issue to my git-event repo
+  gh api repos/Asncodes/git-event/issues/1/coments -f body='hi from CLI'
+```
+
+Before any request, go to this [site](developer.github.com/v4/explorer)
+
+```zsh
+  gh api graphql --paginate -f query='
+    query($endCursor: String) {
+      viewer {
+        repositories(first: 100, after: $endCursor) {
+          nodes { nameWithOwner }
+          pageInfo { hasNextPage
+            endCursor
+          }
+        }
+      }
+    }
+```
