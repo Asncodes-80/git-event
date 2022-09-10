@@ -25,11 +25,9 @@ date: Thu Shahrivar 10
 - GitHub Features
   - GitHub CLI
     - How to install gh in different Operating Systems
-
-    ```bash
-      brew install gh
-    ```
-
+      - brew install gh 
+      - pacman -s github-cli
+      - scoop install github-cli
     - authorization
       - login
     - Config Your gh
@@ -45,6 +43,7 @@ date: Thu Shahrivar 10
     - versions and releases
       - gh release create
       - gh release view
+      - gh release create 'v0.0.1' -F file.ext
     - What is CI/CD, Actions! (devops) 
     - CI
       - Compile code
